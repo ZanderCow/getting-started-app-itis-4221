@@ -1,0 +1,18 @@
+name: Docker Test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build test image
+        run: docker build -f Dockerfile.test -t getting-started-app-test .
+
+      - name: Run test image
+        run: docker run --rm getting-started-app-test
