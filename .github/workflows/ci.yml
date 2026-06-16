@@ -14,5 +14,8 @@ jobs:
       - name: Build test image
         run: docker build -f Dockerfile.test -t getting-started-app-test .
 
-      - name: Run test image
-        run: docker run --rm getting-started-app-test
+      - name: Run frontend lint
+        run: docker run --rm getting-started-app-test npm run lint:frontend
+
+      - name: Run tests
+        run: docker run --rm getting-started-app-test npm test

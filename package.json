@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon -L src/index.js",
-    "test": "NODE_ENV=test SQLITE_DB_LOCATION=/tmp/todo-test.db jest --runInBand"
+    "test": "NODE_ENV=test SQLITE_DB_LOCATION=/tmp/todo-test.db jest --runInBand",
+    "lint:frontend": "eslint src/static/js/app.js && echo \"Frontend lint passed\"",
+    "ci": "npm run lint:frontend && npm test"
   },
   "dependencies": {
     "express": "^5.2.1",
@@ -15,6 +17,7 @@
     "wait-port": "^1.1.0"
   },
   "devDependencies": {
+    "eslint": "^10.5.0",
     "jest": "^30.4.2",
     "nodemon": "^3.1.9"
   },

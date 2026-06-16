@@ -12,4 +12,4 @@ COPY . .
 ENV NODE_ENV=test
 ENV SQLITE_DB_LOCATION=/tmp/todo-test.db
 
-CMD ["npm", "test"]
+CMD ["npm", "run", "ci"]

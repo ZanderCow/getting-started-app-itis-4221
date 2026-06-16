@@ -8,7 +8,7 @@ The application is based on the application from the getting started tutorial at
 ## Running docker-compose command
 `docker compose up -d`
 
-## Running tests with Docker
+## Running CI checks with Docker
 
 Build the test image:
 
@@ -16,7 +16,7 @@ Build the test image:
 docker build -f Dockerfile.test -t getting-started-app-test .
 ```
 
-Run the tests:
+Run frontend linting and tests:
 
 ```bash
 docker run --rm getting-started-app-test
