@@ -1,2 +1,4 @@
-node_modules
-Dockerfile
+node_modules/
+.git/
+.env
+npm-debug.log
