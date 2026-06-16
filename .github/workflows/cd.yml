@@ -64,11 +64,32 @@ jobs:
       - name: Run tests
         run: docker run --rm getting-started-app-test npm test
 
-  build-and-publish-prod-image:
-    name: Build and Publish Production Image
+  codeql-analysis:
+    name: CodeQL Analysis
     needs:
       - frontend-lint
       - mock-tests
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+
+  build-and-publish-prod-image:
+    name: Build and Publish Production Image
+    needs: codeql-analysis
     runs-on: ubuntu-latest
     permissions:
       contents: read
